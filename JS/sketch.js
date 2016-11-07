@@ -18,12 +18,16 @@ function setup()
 function draw()
 {
     background(51);
-    snake.update();
-    snake.show();
+
     if(snake.eat(food))
     {
         pickLocation();
     }
+
+    snake.death();
+    snake.update();
+    snake.show();
+
     fill(255,0,10);
     rect(food.x, food.y,scl,scl);
 
@@ -35,6 +39,8 @@ function pickLocation(){
     food=createVector(floor(random(cols)),floor(random(rows)));
     food.mult(scl);
 }
+
+
 
 function keyPressed(){
     if(keyCode == UP_ARROW)
